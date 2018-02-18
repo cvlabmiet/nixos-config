@@ -1,2 +1,3 @@
 # nixos-config
-NixOS configurations files
+
+A collection of NixOS configurations files

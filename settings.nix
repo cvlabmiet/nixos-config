@@ -1,15 +1,6 @@
 { config, pkgs, ... }:
 
 {
-  fileSystems = {
-    "/" = { device = "/dev/disk/by-label/root"; fsType = "ext4"; };
-    "/boot" = { device = "/dev/disk/by-label/boot"; fsType = "ext4"; };
-    "/home" = { device = "/dev/disk/by-label/home"; fsType = "ext4"; };
-    "/tmp" = { device = "tmpfs"; fsType = "tmpfs"; options = [ "nosuid" "nodev" "relatime" "size=4G" ]; };
-  };
-
-  swapDevices = [ { label = "swap"; } ];
-
   environment.etc = {
     "fuse.conf".text = ''
       user_allow_other

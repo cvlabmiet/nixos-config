@@ -11,8 +11,6 @@ Insert next lines into `configuration.nix`:
 {
     imports = [
         ./hardware-configuration.nix
-        /shared/nixos-config/filesystems.nix
-        /shared/nixos-config/qemu-shared.nix
         /shared/nixos-config/vm-guest.nix
     ];
 }

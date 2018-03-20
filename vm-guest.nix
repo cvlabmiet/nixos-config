@@ -1,5 +1,6 @@
 { config, pkgs, ... }:
 
+with import ./create-env.nix { inherit pkgs; };
 let
   qemu-shared = {
     device = "shared";
@@ -26,6 +27,8 @@ let
       else if config.hardware.parallels.enable then parallels-shared
       else qemu-shared;
 
+  gccenv = createEnv { name = "gcc"; buildInputs = import ./gcc-packages.nix pkgs; };
+
 in rec {
   imports = [ ./settings.nix ];
 
@@ -38,7 +41,7 @@ in rec {
     useDefaultShell = true;
   };
 
-  environment.systemPackages = (import ./core-packages.nix pkgs) ++ import ./gcc-packages.nix pkgs;
+  environment.systemPackages = (import ./core-packages.nix pkgs) ++ [ gccenv ];
 
   boot.loader.timeout = 1;
   services.xserver.enable = false;

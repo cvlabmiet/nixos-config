@@ -9,4 +9,5 @@ pkgs: with pkgs; [
   bviplus dhex vbindiff wcalc jq file which tree
   unrar unzip zip p7zip
   man stdman man-pages posix_man_pages
+  gnumake
 ]

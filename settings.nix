@@ -17,7 +17,10 @@
     '';
   };
 
-  services.openssh.enable = true;
+  services = {
+    openssh.enable = true;
+    openntpd.enable = true;
+  };
 
   systemd.coredump = {
     enable = true;

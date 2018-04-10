@@ -28,6 +28,7 @@ let
       else qemu-shared;
 
   gccenv = createEnv { name = "gcc"; buildInputs = import ./gcc-packages.nix pkgs; };
+  pythonenv = createEnv { name = "python"; buildInputs = import ./python-packages.nix pkgs.python3Packages; };
 
 in rec {
   imports = [ ./settings.nix ];
@@ -41,7 +42,7 @@ in rec {
     useDefaultShell = true;
   };
 
-  environment.systemPackages = (import ./core-packages.nix pkgs) ++ [ gccenv ];
+  environment.systemPackages = (import ./core-packages.nix pkgs) ++ [ gccenv pythonenv ];
 
   boot.loader.timeout = 1;
   services.xserver.enable = false;
